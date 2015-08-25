@@ -1,0 +1,5 @@
+<tr>
+<td data-title="name"><%= payee.name %></td>
+<td data-title="email"><%= link_to payee.email, payee %></td>
+<td><%= link_to "view invoices", payee_invoices_path(payee_id:payee.id) %></td>
+</tr>

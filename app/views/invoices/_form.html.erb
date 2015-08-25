@@ -1,0 +1,9 @@
+<%= bootstrap_form_for(@invoice, inline_errors: false, layout: :horizontal) do |f| %>
+  <%= f.select :payee_id, [['Create new', :create]] + Payee.pluck(:name, :id), selected: params[:payee_id], include_blank: 'Select payee', control_col: "col-sm-6", label_col: "col-sm-3" %>
+  <%= f.number_field :minutes, control_col: "col-sm-3", label_col: "col-sm-3" %>
+  <%= f.number_field :rate, control_col: "col-sm-3", label_col: "col-sm-3", label: "Rate/hr" %>
+  <%= f.text_area :notes, control_col: "col-sm-8", label_col: "col-sm-3" %>
+  <%= f.form_group label_col: "col-sm-3", control_col: "col-sm-8" do %>
+    <%= f.submit class: 'btn btn-primary btn-block' %>
+  <% end %>
+<% end %>

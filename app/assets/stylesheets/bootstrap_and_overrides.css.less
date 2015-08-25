@@ -1,0 +1,138 @@
+@import "twitter/bootstrap/bootstrap";
+
+// Set the correct sprite paths
+@iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");
+@iconWhiteSpritePath: image-url("twitter/bootstrap/glyphicons-halflings-white.png");
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+@fontAwesomeEotPath: font-url("fontawesome-webfont.eot");
+@fontAwesomeEotPath_iefix: font-url("fontawesome-webfont.eot?#iefix");
+@fontAwesomeWoffPath: font-url("fontawesome-webfont.woff");
+@fontAwesomeTtfPath: font-url("fontawesome-webfont.ttf");
+@fontAwesomeSvgPath: font-url("fontawesome-webfont.svg#fontawesomeregular");
+
+// Font Awesome
+@import "fontawesome/font-awesome";
+
+// Glyphicons
+//@import "twitter/bootstrap/glyphicons.less";
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
+//
+// Example:
+// @link-color: #ff0000;
+
+@import url(http://fonts.googleapis.com/css?family=Libre+Baskerville);
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif);
+
+.navbar-brand {
+  margin-right: 8em;
+}
+
+
+body {
+  background-color: #ddd;
+  font: 1.6em 400 'Droid Serif';
+}
+
+.main.container {
+  background-color: white;
+  margin-bottom: 1em;
+  padding-top: 2em;
+  padding-bottom: 6em;
+}
+
+label.required:after {
+  content:" *";
+}
+
+input[type="checkbox"] {
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+}
+
+.page-header {
+  padding-bottom: 9px;
+  margin: 2em 0 1em;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: white;
+  font-size: 0.8em;
+}
+
+.navbar-default .navbar-nav > li > a:active,
+.navbar-default .navbar-nav > li > a:hover {
+  color: white;
+}
+
+.navbar-default .navbar-brand {
+  color: white;
+}
+
+.navbar-default {
+  background-color: #333;
+}
+
+
+#footer {
+  padding: 2em;
+  background-color: #333;
+  min-height: 140px;
+  color: white;
+}
+
+.group {
+  margin: 0.5em 0;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h1, h2, h3, tr, blockquote {
+  font-family: 'Libre+Baskerville', hevetica, serif;
+}
+
+h1 .pill {
+  font-size: 0.4em;
+  position: relative;
+  top: -0.6em;
+  margin: 0 1em 0 1em;
+}
+
+table .pill {
+  font-size: 0.6em;
+  position: relative;
+  top: -0.2em;
+}
+
+.pill {
+  padding: 0.5em;
+  width: 80px;
+  border-radius: 1em;
+  color: white;
+  display: inline-block;
+}
+
+.paid {
+  background-color: green;
+}
+
+.unpaid {
+  border: 1px solid #F1352E;
+  color: #F1352E;
+}
+
+#invoice_search_form {
+  margin: 1em;
+}

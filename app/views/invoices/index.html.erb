@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<div class="page-header">
+  <h1>Invoices <small>(<%= link_to 'create', new_invoice_path %>)</small></h1>
+</div>
+
+<form id="invoice_search_form">
+<input type="text" id="invoice_search" class="form-control input-block" placeholder="Search invoices...">
+<small class="pull-right">Not seeing any results? Try clearing the search box and hit the enter key.</small>
+</form>
+<table class="table table-responsive table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>#</th>
+      <th class="hidden-xs">payee</th>
+      <th>date</th>
+      <th class="hidden-xs">rate</th>
+      <th class="hidden-xs">minutes</th>
+      <th>amount</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @invoices %>
+  </tbody>
+</table>

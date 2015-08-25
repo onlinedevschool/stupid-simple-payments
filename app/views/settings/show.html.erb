@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="page-header inline">
+    <h1>Settings <small>- <%= link_to "edit", :edit_setting, id: 1 %></small></h1>
+  </div>
+</div>
+
+  <div class="row">
+    <div class="group">
+      <label class="control-label col-xs-4 col-sm-3" for="invoice_stripe_test_mode">Stripe Test Mode?</label>
+      <div class="col-sm-6 col-xs-4"><input type="checkbox" <%= @settings.stripe_test_mode? ? "checked" : "" %> disabled="disabled"></div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="group">
+      <h2>Test Keys</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="group">
+      <label class="control-label col-xs-4 col-sm-3" for="invoice_stripe_test_secret_key">Secret Key</label>
+      <div class="col-sm-6 col-xs-4"><%= @settings.stripe_test_secret_key %></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="group">
+      <label class="control-label col-xs-4 col-sm-3" for="invoice_stripe_test_publishable_key">Publishable Key</label>
+      <div class="col-sm-6 col-xs-4"><%= @settings.stripe_test_publishable_key %></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="group">
+      <h2>Live Keys</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="group">
+      <label class="control-label col-xs-4 col-sm-3" for="invoice_stripe_test_secret_key">Secret Key</label>
+      <div class="col-sm-6 col-xs-4"><%= @settings.stripe_test_secret_key %></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="group">
+      <label class="control-label col-xs-4 col-sm-3" for="invoice_stripe_test_publishable_key">Publishable Key</label>
+      <div class="col-sm-6 col-xs-4"><%= @settings.stripe_test_publishable_key %></div>
+    </div>
+  </div>

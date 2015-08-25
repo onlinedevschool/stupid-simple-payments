@@ -1,0 +1,40 @@
+<%= bootstrap_form_for(@settings) do |f| %>
+  <% if @settings.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@settings.errors.count, "error") %> prohibited this settings from being saved:</h2>
+
+      <ul>
+        <% @settings.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= f.form_group label_col: "col-sm-3", control_col: "col-sm-8" do %>
+      <%= f.text_area :branding_html %>
+    <%- end %>
+
+  <%= f.check_box :stripe_test_mode %>
+
+  <fieldset>
+    <legend>Stripe Test Keys</legend>
+    <%= f.form_group label_col: "col-sm-3", control_col: "col-sm-8" do %>
+      <%= f.text_field :stripe_test_secret_key, label: "Secret" %>
+      <%= f.text_field :stripe_test_publishable_key, label: "Publishable" %>
+    <%- end %>
+  </fieldset>
+
+  <fieldset>
+    <legend>Stripe Live Keys</legend>
+    <%= f.form_group label_col: "col-sm-3", control_col: "col-sm-8" do %>
+      <%= f.text_field :stripe_live_secret_key, label: "Secret" %>
+      <%= f.text_field :stripe_live_publishable_key, label: "Publishable" %>
+    <%- end %>
+  </fieldset>
+
+
+  <%= f.form_group label_col: "col-sm-3", control_col: "col-sm-8" do %>
+    <%= f.submit class: 'btn btn-primary btn-block' %>
+  <% end %>
+<% end %>
