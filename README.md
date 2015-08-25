@@ -75,5 +75,10 @@ Resources, Deploy, Metrics, ...
 1. Click the center 'box' [Connect with GitHub], then click the [Connect to GitHub] button towards the bottom.
 2. Next you neext to _Authorize_ your Heroku account with your GitHub account. Click [Authorize]
 3. Now back at Heroku, enter stupid-simple-payments and click search, then select the app you forked up earlier at Guthub and click [connect].
+4. Scroll down a bit to the Manual deploy section
+5. Click [Deploy Branch] leaving Master selected
+
 
 *done*
+
+### Configuration
