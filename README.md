@@ -31,7 +31,23 @@ They will get an email receipt and you get an email telling you they have paid. 
 
 Go to [https://signup.heroku.com/login](https://signup.heroku.com/login) and create your free account.
 
-You will get an email under the address you registered with Heroku. Open that email now and click the link inside to verify it with Heroku.
+You will get an email under the address you registered with Heroku. Open that email now and click the link inside to confirm it.
+
+### Sign up FREE at GitHub
+
+Go to [https://github.com](https://github.com) and create your free account.
+
+You will get an email under the address you registered with GutHub. Open that email now and click the link inside to confirm it.
+
+### Forks, knives, what?
+
+You are now going to copy the source of the application from _my_ account to _yours_, but we nerds call it a fork.
+
+So:
+
+1. Navigate to https://github.com/onlinedevschool/stupid-simple-payments
+2. Click [Fork] in the upper right
+3. Once GitHub is done forking around, bookmark your forked app...
 
 ### Setup your FREE server (its EASY!)
 
@@ -56,6 +72,8 @@ After the last step you should be on a page with a top bar with stuff like:
 
 Resources, Deploy, Metrics, ...
 
-Click the center 'box' [Connect with GitHub]
+1. Click the center 'box' [Connect with GitHub], then click the [Connect to GitHub] button towards the bottom.
+2. Next you neext to _Authorize_ your Heroku account with your GitHub account. Click [Authorize]
+3. Now back at Heroku, enter stupid-simple-payments and click search, then select the app you forked up earlier at Guthub and click [connect].
 
-
+*done*
