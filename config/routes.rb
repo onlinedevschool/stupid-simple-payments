@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  unless ::Invoice.table_exists?
+    require "#{Rails.root}/db/schema"
+  end
+
   devise_for :invoicers
   authenticated :invoicer do
     root 'invoices#index', as: :authenticated_root
