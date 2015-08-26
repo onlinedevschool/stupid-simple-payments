@@ -5,6 +5,16 @@ class ReceiptMailer < ApplicationMailer
 
   def notify_payer(payment)
     mail to: payment.invoice.email,
-         subject: "You were billed #{number_to_currency(payment.invoice.amount)} for ODS hourly"
+      subject: "You paid invoice ##{payment.invoice.id} for
+                #{number_to_currency(payment.invoice.amount)} for ODS
+      #         hourly"
+  end
+
+  def notify_invoicer(payment)
+    @invoice = payment.invoice
+    mail to: "invoices@onlinedevschool.com",
+      subject: "#{payment.invoice.name} paid invoice ##{payment.invoice.id}
+                for #{number_to_currency(payment.invoice.amount)} for ODS
+                hourly"
   end
 end

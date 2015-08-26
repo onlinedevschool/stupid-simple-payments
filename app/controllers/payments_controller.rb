@@ -16,7 +16,7 @@ class PaymentsController < ApplicationController
     success = new_payment(payment_params).save
     if success
       new_payment.charge(payment_params[:stripe_token])
-      ReceiptMailer.notify_payer(new_payment).deliver
+      send_emails(new_payment)
     end
 
     respond_to do |format|
@@ -38,6 +38,11 @@ private
 
   def new_payment(attrs={})
     @payment ||= invoice.build_payment(attrs)
+  end
+
+  def send_emails(payment)
+    ReceiptMailer.notify_payer(payment).deliver
+    ReceiptMailer.notify_invoicer(payment).deliver
   end
 
   def payment_params

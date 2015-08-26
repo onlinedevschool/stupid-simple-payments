@@ -37,8 +37,9 @@ private
 
   def return_url_or(payee)
     if session[:return_url]
-      session[:return_url] + "?yee
-      payee_id=#{payee.id}"
+      session[:return_url] + "?payee_id=#{payee.id}"
+    else
+      payee
     end
   end
 

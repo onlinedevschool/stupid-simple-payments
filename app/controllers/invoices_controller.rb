@@ -10,12 +10,13 @@ class InvoicesController < ApplicationController
   end
 
   def new
-   new_invoice
+    new_invoice
+    session[:return_url] = request.path
   end
 
   def create
     if new_invoice(invoice_params).save
-      InvoiceMailer.notify_payer(new_invoice).deliver
+      send_emails(new_invoice)
       redirect_to new_invoice, notice: 'Invoice was successfully created.'
     else
       render :new
@@ -38,6 +39,11 @@ private
 
   def new_invoice(attrs={})
     @invoice ||= Invoice.new(attrs)
+  end
+
+  def send_emails(invoice)
+    InvoiceMailer.notify_payer(invoice).deliver
+    InvoiceMailer.notify_invoicer(invoice).deliver
   end
 
   def invoice_params
