@@ -3,8 +3,10 @@ class Payee < ActiveRecord::Base
   has_many :invoices, dependent: :destroy
 
   scope :recent, -> {
-    joins(:invoices).order("invoices.created_at desc").
-                     limit(16)
+    joins(:invoices).
+      order("invoices.created_at desc").
+      group("invoices.payee_id")
+      limit(16)
   }
 
   validates :name, presence: true
