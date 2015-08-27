@@ -1,4 +1,5 @@
 class Payee < ActiveRecord::Base
+  belongs_to :invoicer
   has_many :invoices, dependent: :destroy
 
   scope :recent, -> {

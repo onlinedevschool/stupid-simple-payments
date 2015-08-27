@@ -24,20 +24,21 @@ class PayeesController < ApplicationController
 private
 
   def payees
-    @payees ||= Payee.recent
+    @payees ||= current_invoicer.payees.recent
   end
 
   def payee
-    @payee ||= Payee.find(params[:id])
+    @payee ||= current_invoicer.payees.find(params[:id])
   end
 
   def new_payee(attrs={})
-    @payee ||= Payee.new(attrs)
+    @payee ||= current_invoicer.payees.new(attrs)
   end
 
   def return_url_or(payee)
-    if session[:return_url]
-      session[:return_url] + "?payee_id=#{payee.id}"
+    if url = session[:return_url]
+      session[:return_url] = nil
+      url + "?payee_id=#{payee.id}"
     else
       payee
     end

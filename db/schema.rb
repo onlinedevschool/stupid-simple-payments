@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150824010255) do
+ActiveRecord::Schema.define(version: 20150827181120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,22 +35,27 @@ ActiveRecord::Schema.define(version: 20150824010255) do
   add_index "invoicers", ["reset_password_token"], name: "index_invoicers_on_reset_password_token", unique: true, using: :btree
 
   create_table "invoices", force: :cascade do |t|
-    t.string   "email"
     t.integer  "minutes"
     t.integer  "rate"
     t.text     "notes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "payee_id"
+    t.integer  "invoicer_id"
   end
+
+  add_index "invoices", ["invoicer_id"], name: "index_invoices_on_invoicer_id", using: :btree
 
   create_table "payees", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.string   "phone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "invoicer_id"
   end
+
+  add_index "payees", ["invoicer_id"], name: "index_payees_on_invoicer_id", using: :btree
 
   create_table "payments", force: :cascade do |t|
     t.integer  "invoice_id"

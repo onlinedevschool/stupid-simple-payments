@@ -27,18 +27,18 @@ private
 
   def invoices
     @invoices ||= if params.has_key?(:payee_id)
-      Payee.find(params[:payee_id]).invoices
+      current_invoicer.payees.find(params[:payee_id]).invoices
     else
-      Invoice.search(params[:q])
+      current_invoicer.invoices.search(params[:q])
     end
   end
 
   def invoice
-    @invoice ||= Invoice.find(params[:id])
+    @invoice ||= current_invoicer.invoices.find(params[:id])
   end
 
   def new_invoice(attrs={})
-    @invoice ||= Invoice.new(attrs)
+    @invoice ||= current_invoicer.invoices.new(attrs)
   end
 
   def send_emails(invoice)
