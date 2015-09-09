@@ -8,6 +8,15 @@ class Invoice < ActiveRecord::Base
     order(created_at: :desc).limit(16)
   }
 
+  scope :unpaid, -> {
+    joins("LEFT OUTER JOIN payments ON payments.invoice_id = invoices.id").
+      where("payments.invoice_id IS NULL")
+  }
+
+  scope :past_due_7_days, -> {
+    unpaid.where("invoices.created_at < ?", 7.days.ago)
+  }
+
   scope :search, ->(q) {
     return recent unless q
     recent.joins(:payee).

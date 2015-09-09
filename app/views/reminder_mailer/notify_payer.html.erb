@@ -1,0 +1,4 @@
+<h1>You have an overdue invoice</h1>
+<p>Oops. It looks like you forgot to pay invoice #<%= @invoice.id %>.
+<p>You can take care of it here: 
+<%= link_to @payment_url, @payment_url  %></p>
