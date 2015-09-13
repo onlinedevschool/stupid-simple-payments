@@ -4,8 +4,23 @@ class Invoice < ActiveRecord::Base
 
   has_one :payment, dependent: :destroy
 
+  with_options presence: true do |a|
+    a.validates :payee_id
+    a.validates :minutes, numericality: true
+    a.validates :rate,    numericality: true
+    a.validates :notes
+  end
+
+  scope :with_amounts, -> {
+    select("invoices.*, (invoices.rate * (invoices.minutes/60)) as amount")
+  }
+
   scope :recent, -> {
     order(created_at: :desc).limit(16)
+  }
+
+  scope :paid, -> {
+    joins("JOIN payments ON payments.invoice_id = invoices.id")
   }
 
   scope :unpaid, -> {
@@ -23,11 +38,26 @@ class Invoice < ActiveRecord::Base
       where(get_sql(q))
   }
 
-  with_options presence: true do |a|
-    a.validates :payee_id
-    a.validates :minutes, numericality: true
-    a.validates :rate,    numericality: true
-    a.validates :notes
+  scope :from_date, ->(date) {
+    paid.where("payments.created_at > ?", date)
+  }
+
+  scope :this_year, -> {
+    from = Date.today.beginning_of_year.beginning_of_month.beginning_of_day
+    from_date(from)
+  }
+
+  scope :this_month, -> {
+    from = Date.today.beginning_of_month.beginning_of_day
+    from_date(from)
+  }
+
+  def self.ytd
+    this_year.reduce(0) {|a, i| a + i.amount }
+  end
+
+  def self.mtd
+    this_month.reduce(0) {|a, i| a + i.amount }
   end
 
   def email

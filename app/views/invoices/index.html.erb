@@ -1,6 +1,8 @@
-<p id="notice"><%= notice %></p>
-
 <div class="page-header">
+  <div class="pull-right">
+    <span>YTD: <%= number_to_currency(Invoice.ytd) %></span>
+    <span>MTD: <%= number_to_currency(Invoice.mtd) %></span>
+  </div>
   <h1>Invoices <small>(<%= link_to 'create', new_invoice_path %>)</small></h1>
 </div>
 
