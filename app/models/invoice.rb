@@ -42,6 +42,10 @@ class Invoice < ActiveRecord::Base
     (minutes.to_f/60.to_f) * rate
   end
 
+  def opened?
+    Ahoy::Message.find_by(user: self).opened_at.present?
+  end
+
   def paid?
     payment && payment.auth_code.present?
   end

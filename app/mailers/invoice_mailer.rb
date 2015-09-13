@@ -5,6 +5,7 @@ class InvoiceMailer < ApplicationMailer
 
   def notify_payer(invoice)
     @payment_url = new_invoice_payment_url(invoice)
+    track user: invoice
     mail to: invoice.email,
          subject: "You were invoiced for #{number_to_currency(invoice.amount)} @ ODS"
   end

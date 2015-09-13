@@ -6,8 +6,7 @@ class ReceiptMailer < ApplicationMailer
   def notify_payer(payment)
     mail to: payment.invoice.email,
       subject: "You paid invoice ##{payment.invoice.id} for
-                #{number_to_currency(payment.invoice.amount)} for ODS
-      #         hourly"
+                #{number_to_currency(payment.invoice.amount)} for ODS hourly"
   end
 
   def notify_invoicer(payment)

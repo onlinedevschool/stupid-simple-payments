@@ -28,6 +28,9 @@ gem 'dotenv-rails'
 gem 'devise'
 gem 'twitter-bootstrap-rails'
 
+# email tracking
+gem 'ahoy_email'
+
 # TBR deps
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
