@@ -25,6 +25,13 @@ Inside is a link to view your invoice. The payee:
 
 They will get an email receipt and you get an email telling you they have paid. It really is that simple.
 
+## Implemented Features
+
+* Email notifications to payee and invoicer
+* The initial email is tracked, so when the payee opens it, the invoice status changes on the app
+* Full stripe integration
+* Invoice searching
+
 ## Installation (also pretty damn simple!)
 
 ### Sign up FREE at Heroku
