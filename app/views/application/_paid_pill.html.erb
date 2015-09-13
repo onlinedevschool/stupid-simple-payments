@@ -1,4 +1,4 @@
-<span class="text-center pill <%= paid_pill.paid? ? 'paid' : 'unpaid' %>">
+<span class="text-center pill <%= paid_pill.status %>">
   <%= paid_pill.paid? ? paid_pill.payment.created_on : "unpaid" %>
 </span>
 

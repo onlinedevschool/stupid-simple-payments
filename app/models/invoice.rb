@@ -46,6 +46,12 @@ class Invoice < ActiveRecord::Base
     Ahoy::Message.find_by(user: self).opened_at.present?
   end
 
+  def status
+    return :unopened if !opened?
+    return :unpaid   if !paid?
+    :paid
+  end
+
   def paid?
     payment && payment.auth_code.present?
   end
