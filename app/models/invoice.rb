@@ -43,13 +43,18 @@ class Invoice < ActiveRecord::Base
   end
 
   def opened?
-    Ahoy::Message.find_by(user: self).opened_at.present?
+    msg = Ahoy::Message.find_by(user: self)
+    msg.present? && msg.opened_at.present?
+  end
+
+  def unopened?
+    !opened?
   end
 
   def status
-    return :unopened if !opened?
-    return :unpaid   if !paid?
-    :paid
+    return :paid     if paid?
+    return :unopened if unopened?
+    :unpaid
   end
 
   def paid?
