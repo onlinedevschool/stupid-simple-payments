@@ -17,6 +17,7 @@
 //= require jquery.payment
 //= require jquery.redirect
 //= require bootstrap-select.min
+//= require pusher.min
 //= require_tree .
 
 $('select').selectpicker();

@@ -16,6 +16,7 @@ class PaymentsController < ApplicationController
     success = new_payment(payment_params).save
     if success
       new_payment.charge(payment_params[:stripe_token])
+      trigger_pusher
       send_emails(new_payment)
     end
 
@@ -43,6 +44,13 @@ private
   def send_emails(payment)
     ReceiptMailer.notify_payer(payment).deliver
     ReceiptMailer.notify_invoicer(payment).deliver
+  end
+
+  def trigger_pusher
+    Pusher.trigger('invoices', 'paid', {
+      invoice_id: new_payment.invoice_id,
+      created_on: new_payment.invoice.created_on
+    })
   end
 
   def payment_params

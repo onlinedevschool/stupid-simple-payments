@@ -23,8 +23,6 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'stripe'
-gem 'dotenv-rails'
 gem 'devise'
 gem 'twitter-bootstrap-rails'
 
@@ -40,8 +38,18 @@ gem 'bootstrap_form'
 gem 'devise-bootstrap-views'
 gem 'will_paginate-bootstrap'
 
+# Payments
+gem 'stripe'
+
 # Dates
 gem 'chronic'
+
+# Pusher
+gem 'pusher'
+gem 'pusher_rails'
+
+# secure env
+gem 'dotenv-rails'
 
 # heroku
 gem 'rails_12factor', group: :production
